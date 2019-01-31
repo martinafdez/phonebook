@@ -57,7 +57,7 @@ def typePostcodeOrCity():
             typeBizTypeOrName(userInputPostcodeOrCity)
 
 
-def businessAtLocation():
+def businessAtLocation(userInputPostcodeOrCity):
     options =[]
     if userInputPostcodeOrCity.isalpha():
         userInputPostcodeOrCity = userInputPostcodeOrCity.title()
@@ -78,8 +78,8 @@ def businessAtLocation():
 
 # ask for user input BIZTYPE or BIZNAME, check if in 
 def typeBizTypeOrName(userInputPostcodeOrCity):
-#    print("Here are business type options for your location:")
-#    businessAtLocation()
+    print("Here are business type options for your location:")
+    businessAtLocation(userInputPostcodeOrCity)
     userInputBizTypeOrName = input("Type in name or type of business: ").title()
 
     c.execute('SELECT * FROM business WHERE postcode = ? AND typeBusiness = ? OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputBizTypeOrName, userInputBizTypeOrName) )
