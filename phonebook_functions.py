@@ -84,7 +84,9 @@ def typeBizTypeOrName(userInputPostcodeOrCity):
 
     c.execute('SELECT * FROM business WHERE postcode = ? OR city = ? AND typeBusiness = ? OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputPostcodeOrCity, userInputBizTypeOrName, userInputBizTypeOrName) )
     resultsFinalPc =  c.fetchall()
+    
     if len(resultsFinalPc) != 0:
+            print('Here your search result: ')
             print(resultsFinalPc)
 
     else:
