@@ -31,7 +31,7 @@ def typePostcodeOrCity():
             print("Sorry, nothing in this city. Try again.")
             typePostcodeOrCity()
         else:
-            typeBizType(userInputPostcodeOrCity)
+            typeBizTypeOrName(userInputPostcodeOrCity)
 
     else: 
         #POSTCODE
@@ -54,24 +54,24 @@ def typePostcodeOrCity():
             print("Sorry, nothing for this postcode! Try again.")
             typePostcodeOrCity()
         else:
-            typeBizType(userInputPostcodeOrCity)
+            typeBizTypeOrName(userInputPostcodeOrCity)
 
-# ask for user input BIZTYPE, check if in 
-def typeBizType(userInputPostcodeOrCity):
-    userInputBizType = input("Type in biz type: ").title()
+# ask for user input BIZTYPE or BIZNAME, check if in 
+def typeBizTypeOrName(userInputPostcodeOrCity):
+    userInputBizTypeOrName = input("Type in name or type of business: ").title()
 
-    c.execute('SELECT * FROM business WHERE postcode = ? AND typeBusiness  = ?', (userInputPostcodeOrCity, userInputBizType) )
+    c.execute('SELECT * FROM business WHERE postcode = ? AND typeBusiness OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputBizTypeOrName) )
     resultsFinalPc =  c.fetchall()
     if len(resultsFinalPc) != 0:
             print(resultsFinalPc)
     else:
-        c.execute('SELECT * FROM business WHERE city = ? AND typeBusiness  = ?', (userInputPostcodeOrCity, userInputBizType) )
+        c.execute('SELECT * FROM business WHERE city = ? AND typeBusiness OR nameBusiness = ?', (userInputPostcodeOrCity, userInputBizTypeOrName) )
         resultsFinalC =  c.fetchall()
         
         if len(resultsFinalC) != 0:
             print(resultsFinalC)
         else:
-            print("Sorry, nothing for " + userInputBizType + " in " + userInputPostcodeOrCity + ". Try again!")
+            print("Sorry, nothing for " + userInputBizTypeOrName + " in " + userInputPostcodeOrCity + ". Try again!")
             typePostcodeOrCity()
 
 typePostcodeOrCity()
