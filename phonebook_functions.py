@@ -82,19 +82,14 @@ def typeBizTypeOrName(userInputPostcodeOrCity):
 #    businessAtLocation()
     userInputBizTypeOrName = input("Type in name or type of business: ").title()
 
-    c.execute('SELECT * FROM business WHERE postcode = ? AND typeBusiness OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputBizTypeOrName) )
+    c.execute('SELECT * FROM business WHERE postcode = ? AND typeBusiness = ? OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputBizTypeOrName, userInputBizTypeOrName) )
     resultsFinalPc =  c.fetchall()
     if len(resultsFinalPc) != 0:
             print(resultsFinalPc)
+
     else:
-        c.execute('SELECT * FROM business WHERE city = ? AND typeBusiness OR nameBusiness = ?', (userInputPostcodeOrCity, userInputBizTypeOrName) )
-        resultsFinalC =  c.fetchall()
-        
-        if len(resultsFinalC) != 0:
-            print(resultsFinalC)
-        else:
-            print("Sorry, nothing for " + userInputBizTypeOrName + " in " + userInputPostcodeOrCity + ". Try again!")
-            typePostcodeOrCity()
+        print("Sorry, nothing for " + userInputBizTypeOrName + " in " + userInputPostcodeOrCity + ". Try again!")
+        typePostcodeOrCity()
 
 typePostcodeOrCity()
 
