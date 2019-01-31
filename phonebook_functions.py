@@ -60,7 +60,7 @@ def typePostcodeOrCity():
 def typeBizTypeOrName(userInputPostcodeOrCity):
     userInputBizTypeOrName = input("Type in name or type of business: ").title()
 
-    c.execute('SELECT * FROM business WHERE postcode = ? AND typeBusiness = ? OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputBizTypeOrName, userInputBizTypeOrName) )
+    c.execute('SELECT * FROM business WHERE postcode = ? OR city = ? AND typeBusiness = ? OR nameBusiness  = ?', (userInputPostcodeOrCity, userInputPostcodeOrCity, userInputBizTypeOrName, userInputBizTypeOrName) )
     resultsFinalPc =  c.fetchall()
     if len(resultsFinalPc) != 0:
             print(resultsFinalPc)
