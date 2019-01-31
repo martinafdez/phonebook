@@ -25,7 +25,7 @@ class DatabaseTest(unittest.TestCase):
     def test_empty_table(self):
         self.assertTrue(checkIfTableEmpty('phonebook.db')) 
   
-
+#comment
    
     
     
