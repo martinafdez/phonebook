@@ -86,9 +86,10 @@ def typeBizTypeOrName(userInputPostcodeOrCity):
     resultsFinalPc =  c.fetchall()
     
     if len(resultsFinalPc) != 0:
-            print('Here your search result: ')
-            print(resultsFinalPc)
-
+        print('Here your search result: ')
+        print(sorted(resultsFinalPc,  key=lambda kv : kv[1]))
+#        alphabethOrder = sorted(resultsFinalPc, key=lambda kv : kv[1])
+#        if 
     else:
         print("Sorry, nothing for " + userInputBizTypeOrName + " in " + userInputPostcodeOrCity + ". Try again!")
         typePostcodeOrCity()
