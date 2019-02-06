@@ -1,0 +1,33 @@
+###############################################
+
+# CHAPTER 9 - DEFINING A SOFTWARE PROJECT
+
+##############################################
+
+MoSCoW Requirements Prioritization Technique
+
+Project : Phonebook
+
+
+MUST (M)
+- search for people and businesses in the UK.
+- for each person we must return: Name, Surname, Address, city, country, postcode, phone number
+- for each business we must return: Business name, Business type, address, city, country, postcode, phone number
+- calculate the distance between the result and the user input postcode
+- search by business type or name and postcode
+- search by surname and postcode
+
+SHOULD (S)
+- return a list sorted by distance
+- return a list sorted by alphabetical order
+
+
+COULD (C)
+- search people and businesses by city
+- return just a certain amount of results
+- view related Search results
+
+WON’T or WOULD (W)
+- pick the geolocation of the user
+- monetisation (examples: advertise a business, host third parties adv)
+- FAQ (examples: how to add my details, how to remove my details)
